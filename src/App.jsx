@@ -6,12 +6,11 @@ function App() {
   const [ showLogin, setShowLogin ] = useState(true);
   const [ showText, setShowText ] = useState(false);
   const [ helloIp, setHelloIp ] = useState(null);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(' ');
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ error, setError ] = useState(' ');
 
   const openTab = () => { setShowLogin(false);  setShowText(true);  }
-  const closeTab = () => { setShowLogin(true);  setShowText(false);  }
 
   const url = "http://ip-api.com/json/";
   
@@ -65,9 +64,9 @@ function App() {
         <fieldset>
           <label htmlFor="username">Username
             <input id="username" type="text" onChange={handleUsernameChange} required/></label>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
           <label htmlFor="password">Password
             <input id="password" type="password" onChange={handlePasswordChange} required/></label>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </fieldset> 
         <input type="submit" value="Log In" onClick={handleClick} />
       </div>
@@ -75,7 +74,7 @@ function App() {
       {showText && (
         <>
         <label>{helloIp} {username}, you have successfully logged in!</label>
-        <input type="submit" value="Refresh" onClick={handleReload} />
+        <input type="submit" value="Log Out" onClick={handleReload} />
         </>
       )}
     </>
