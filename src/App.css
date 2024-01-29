@@ -36,6 +36,8 @@ input {
   width: 100%;
   min-height: 1em;
   box-sizing: border-box;
+  border-radius: 0.5rem;
+  /* background-color: rgb(255, 200, 200); */
 }
 
 input[type="submit"]{
@@ -43,4 +45,5 @@ input[type="submit"]{
   width: 50%;
   height: 2em;
   margin: 1em auto 0 auto;
+  background-color: white;
 }

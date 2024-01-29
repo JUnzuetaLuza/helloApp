@@ -6,6 +6,9 @@ function App() {
   const [ showLogin, setShowLogin ] = useState(true);
   const [ showText, setShowText ] = useState(false);
   const [ helloIp, setHelloIp ] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(' ');
 
   const openTab = () => { setShowLogin(false);  setShowText(true);  }
   const closeTab = () => { setShowLogin(true);  setShowText(false);  }
@@ -31,23 +34,49 @@ function App() {
   })
   .catch(error => { console.log("Error al realizar la solicitud", error); })
   
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const errorCredentials = () => {
+    if(!username.trim()) { setError('Username is required'); return; } 
+    if(username.length > 10) { setError('Username too long'); return; }
+    if(!password.trim()) { setError('Password is required'); return; }
+    setError('');
+    openTab();
+  }
+
+  const handleClick = () => {
+    errorCredentials();
+    console.log(error)
+  }
+  const handleReload = () => {
+    window.location.reload();
+  }
 
   return (
     <>
       {showLogin && (
       <div className="container">
         <h1>Hello App</h1>
-        <form>
         <fieldset>
-          <label htmlFor="username">Username<input id="username" type="text" required/></label>
-          <label htmlFor="password">Password<input id="password" type="password" required/></label>
+          <label htmlFor="username">Username
+            <input id="username" type="text" onChange={handleUsernameChange} required/></label>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+          <label htmlFor="password">Password
+            <input id="password" type="password" onChange={handlePasswordChange} required/></label>
         </fieldset> 
-        <input type="submit" value="Log In" onClick={openTab} />
-        </form>
+        <input type="submit" value="Log In" onClick={handleClick} />
       </div>
       )}
       {showText && (
-        <label>{helloIp}</label>
+        <>
+        <label>{helloIp} {username}, you have successfully logged in!</label>
+        <input type="submit" value="Refresh" onClick={handleReload} />
+        </>
       )}
     </>
   )
