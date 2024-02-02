@@ -20,8 +20,8 @@ function App() {
     return response.json();
   })
   .then(data => { 
-    const ip = data.query; 
-    fetch ( "https://hellosalut.stefanbohacek.dev/?ip=" + ip )
+    const cc = data.countryCode; 
+    fetch ( "https://hellosalut.stefanbohacek.dev/?cc=" + cc )
     .then(response => {
       if(!response.ok) { throw new Error("La solicitud no fue exitosa"); }
       return response.json();
