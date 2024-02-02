@@ -12,7 +12,7 @@ function App() {
 
   const openTab = () => { setShowLogin(false);  setShowText(true);  }
 
-  const url = "https://ip-api.com/json/";
+  const url = "http://ip-api.com/json/";
   
   fetch ( url )
   .then(response => {
