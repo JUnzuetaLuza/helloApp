@@ -31,7 +31,10 @@ function App() {
       console.log(data.hello);
     })
   })
-  .catch(error => { console.log("Error al realizar la solicitud", error); })
+  .catch(error => {
+    setHelloIp("Hello")
+    console.log("Error al realizar la solicitud", error); 
+  })
   
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
