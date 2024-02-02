@@ -12,7 +12,7 @@ function App() {
 
   const openTab = () => { setShowLogin(false);  setShowText(true);  }
 
-  const url = "http://ip-api.com/json/";
+  const url = "https://ip-api.com/json/";
   
   fetch ( url )
   .then(response => {
@@ -21,7 +21,7 @@ function App() {
   })
   .then(data => { 
     const cc = data.countryCode; 
-    fetch ( "https://hellosalut.stefanbohacek.dev/?cc=" + cc )
+    fetch ( "http://hellosalut.stefanbohacek.dev/?cc=" + cc )
     .then(response => {
       if(!response.ok) { throw new Error("La solicitud no fue exitosa"); }
       return response.json();
