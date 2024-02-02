@@ -21,7 +21,7 @@ function App() {
   })
   .then(data => { 
     const cc = data.countryCode; 
-    fetch ( "http://hellosalut.stefanbohacek.dev/?cc=" + cc )
+    fetch ( "https://hellosalut.stefanbohacek.dev/?cc=" + cc )
     .then(response => {
       if(!response.ok) { throw new Error("La solicitud no fue exitosa"); }
       return response.json();
